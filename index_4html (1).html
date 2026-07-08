@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>جوامع الكلم | أحاديث نبوية شريفة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F3A35;
+    --ink-2:#164A43;
+    --parchment:#F4EDDA;
+    --parchment-2:#ECE2C6;
+    --gold:#B5892B;
+    --gold-light:#D8B45E;
+    --maroon:#7C2D2D;
+    --charcoal:#2B2620;
+    --sahih:#2F6B4F;
+    --hasan:#8A6A16;
+    --card-shadow:rgba(43,38,32,0.08);
+    --card-shadow-hover:rgba(43,38,32,0.14);
+  }
+
+  [data-theme="dark"]{
+    --ink:#081F1C;
+    --ink-2:#0F2E29;
+    --parchment:#151714;
+    --parchment-2:#1E211C;
+    --gold:#C9A24B;
+    --gold-light:#E4C578;
+    --maroon:#D97A7A;
+    --charcoal:#EAE3D2;
+    --sahih:#5FAE86;
+    --hasan:#D6B34A;
+    --card-shadow:rgba(0,0,0,0.35);
+    --card-shadow-hover:rgba(0,0,0,0.5);
+  }
+
+  [data-theme="dark"] body{
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(201,162,75,0.05) 0%, transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(15,58,53,0.15) 0%, transparent 40%);
+  }
+
+  [data-theme="dark"] .search-box,
+  [data-theme="dark"] .card{
+    background:var(--parchment-2);
+  }
+
+  [data-theme="dark"] .card-badge{
+    background:var(--ink-2);
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--parchment);
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(181,137,43,0.06) 0%, transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(15,58,53,0.05) 0%, transparent 40%);
+    color:var(--charcoal);
+    font-family:'Cairo', sans-serif;
+    min-height:100vh;
+    transition:background-color .35s ease, color .35s ease;
+  }
+
+  /* ===== Header ===== */
+  header{
+    background:linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+    color:var(--parchment);
+    padding:56px 20px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+
+  header::before, header::after{
+    content:"";
+    position:absolute;
+    top:0; bottom:0;
+    width:14px;
+    background:repeating-linear-gradient(180deg, var(--gold) 0 10px, transparent 10px 20px);
+    opacity:0.5;
+  }
+  header::before{ right:0; }
+  header::after{ left:0; }
+
+  .star{
+    display:inline-block;
+    width:34px; height:34px;
+    margin-bottom:14px;
+  }
+
+  header h1{
+    font-family:'Amiri', serif;
+    font-size:2.6rem;
+    margin:0 0 8px;
+    letter-spacing:1px;
+  }
+
+  header p.subtitle{
+    font-family:'Cairo', sans-serif;
+    font-weight:300;
+    font-size:1rem;
+    color:var(--gold-light);
+    margin:0;
+    letter-spacing:2px;
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin:22px auto 0;
+    max-width:320px;
+  }
+  .divider .line{ flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .divider svg{ width:18px; height:18px; opacity:0.85; }
+
+  /* ===== Controls ===== */
+  .controls{
+    max-width:900px;
+    margin:-24px auto 0;
+    padding:0 20px;
+    position:relative;
+    z-index:2;
+  }
+
+  .search-box{
+    background:var(--parchment);
+    border:1px solid var(--gold);
+    border-radius:10px;
+    padding:14px 18px;
+    box-shadow:0 8px 24px rgba(15,58,53,0.18);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .search-box input{
+    flex:1;
+    border:none;
+    background:transparent;
+    font-family:'Cairo', sans-serif;
+    font-size:1rem;
+    color:var(--charcoal);
+    outline:none;
+    direction:rtl;
+  }
+  .search-box input::placeholder{ color:#8a8272; }
+  .search-box svg{ width:18px; height:18px; color:var(--gold); flex-shrink:0; }
+
+  .filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin:18px 0 6px;
+  }
+  .filter-btn{
+    font-family:'Cairo', sans-serif;
+    font-size:0.85rem;
+    font-weight:600;
+    padding:8px 18px;
+    border-radius:999px;
+    border:1px solid var(--gold);
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    transition:all .2s ease;
+  }
+  .filter-btn:hover{ background:rgba(181,137,43,0.12); }
+  .filter-btn.active{
+    background:var(--gold);
+    color:var(--parchment);
+    border-color:var(--gold);
+  }
+
+  .count-line{
+    text-align:center;
+    font-size:0.85rem;
+    color:#6b6455;
+    margin:14px 0 30px;
+  }
+
+  /* ===== Cards ===== */
+  main{
+    max-width:900px;
+    margin:0 auto;
+    padding:0 20px 70px;
+    display:grid;
+    gap:24px;
+  }
+
+  .card{
+    background:var(--parchment);
+    border:1px solid rgba(181,137,43,0.5);
+    border-radius:6px;
+    position:relative;
+    padding:28px 30px 24px;
+    box-shadow:0 1px 0 rgba(255,255,255,0.6) inset, 0 10px 22px var(--card-shadow);
+    transition:transform .25s ease, box-shadow .25s ease, background-color .35s ease;
+  }
+  .card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 32px var(--card-shadow-hover);
+  }
+
+  .card::before{
+    content:"";
+    position:absolute;
+    top:10px; bottom:10px; right:10px; left:10px;
+    border:1px solid rgba(181,137,43,0.25);
+    border-radius:3px;
+    pointer-events:none;
+  }
+
+  .card-badge{
+    position:absolute;
+    top:-14px;
+    right:24px;
+    background:var(--ink);
+    color:var(--gold-light);
+    font-size:0.72rem;
+    font-weight:700;
+    padding:5px 14px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    box-shadow:0 4px 10px rgba(15,58,53,0.3);
+  }
+  .card-badge svg{ width:12px; height:12px; }
+
+.isnad-line{
+    font-family:'Cairo', sans-serif;
+    font-size:0.95rem;
+    font-weight:600;
+    color:var(--ink-2);
+    margin:18px 0 4px;
+  }
+
+  .hadith-text{
+    font-family:'Amiri', serif;
+    font-size:1.5rem;
+    line-height:2.4;
+    color:var(--charcoal);
+    text-align:justify;
+    margin:6px 0 22px;
+  }
+
+  .meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 24px;
+    font-size:0.85rem;
+    color:#5c5548;
+    border-top:1px dashed rgba(181,137,43,0.5);
+    padding-top:14px;
+  }
+  .meta span.label{ color:var(--maroon); font-weight:700; }
+
+  .grade{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-weight:700;
+    font-size:0.8rem;
+    padding:3px 12px;
+    border-radius:999px;
+  }
+  .grade.sahih{ background:rgba(47,107,79,0.12); color:var(--sahih); }
+  .grade.hasan{ background:rgba(138,106,22,0.12); color:var(--hasan); }
+
+  .verify-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:14px;
+    padding:8px 16px;
+    font-family:'Cairo', sans-serif;
+    font-size:0.82rem;
+    font-weight:600;
+    color:var(--ink);
+    background:transparent;
+    border:1px solid var(--gold);
+    border-radius:8px;
+    text-decoration:none;
+    transition:background-color .2s ease, color .2s ease;
+  }
+  .verify-link:hover{
+    background:var(--gold);
+    color:var(--parchment);
+  }
+  .verify-link svg{ width:14px; height:14px; }
+
+  .empty-state{
+    text-align:center;
+    padding:60px 20px;
+    color:#8a8272;
+    font-size:1.05rem;
+  }
+
+  footer{
+    text-align:center;
+    padding:26px 20px 40px;
+    color:#8a8272;
+    font-size:0.8rem;
+  }
+
+  @media (max-width:600px){
+    header h1{ font-size:2rem; }
+    .hadith-text{ font-size:1.3rem; line-height:2.2; }
+    .card{ padding:22px 18px 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .card{ transition:none; }
+  }
+
+  /* ===== Theme toggle ===== */
+  .theme-toggle{
+    position:fixed;
+    top:20px;
+    left:20px;
+    z-index:50;
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    border:1px solid var(--gold);
+    background:var(--ink);
+    color:var(--gold-light);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+    transition:transform .2s ease, background-color .35s ease;
+  }
+  .theme-toggle:hover{ transform:scale(1.08); }
+  .theme-toggle svg{ width:22px; height:22px; }
+  .theme-toggle .icon-sun{ display:none; }
+  [data-theme="dark"] .theme-toggle .icon-moon{ display:none; }
+  [data-theme="dark"] .theme-toggle .icon-sun{ display:block; }
+
+  /* ===== Salawat reminder ===== */
+  .salawat-toast{
+    position:fixed;
+    bottom:28px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    max-width:90%;
+    background:var(--ink);
+    color:var(--gold-light);
+    border:1px solid var(--gold);
+    border-radius:14px;
+    padding:16px 26px;
+    text-align:center;
+    font-family:'Amiri', serif;
+    font-size:1.15rem;
+    box-shadow:0 14px 34px rgba(0,0,0,0.3);
+    z-index:60;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .salawat-toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+    pointer-events:auto;
+  }
+  .salawat-toast .star-mini{
+    width:16px; height:16px;
+    display:inline-block;
+    vertical-align:middle;
+    margin-inline-end:8px;
+  }
+
+  @media (max-width:600px){
+    .theme-toggle{ width:40px; height:40px; top:14px; left:14px; }
+    .salawat-toast{ font-size:1rem; padding:14px 18px; bottom:18px; }
+  }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الداكن">
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+</button>
+
+<div class="salawat-toast" id="salawatToast">
+  <svg class="star-mini" viewBox="0 0 100 100" fill="currentColor"><path d="M50 8 L58 36 L86 36 L63 53 L71 82 L50 64 L29 82 L37 53 L14 36 L42 36 Z"/></svg>
+  <span id="salawatText">اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنا مُحَمَّدٍ</span>
+</div>
+
+
+<header>
+  <svg class="star" viewBox="0 0 100 100" fill="none">
+    <path d="M50 2 L61 39 L98 39 L68 61 L79 98 L50 75 L21 98 L32 61 L2 39 L39 39 Z" fill="#D8B45E"/>
+  </svg>
+  <h1>جوامع الكَلِم</h1>
+  <p class="subtitle">أحاديث نبوية شريفة موثّقة بالراوي والمصدر ودرجة الصحة</p>
+  <div class="divider">
+    <span class="line"></span>
+    <svg viewBox="0 0 100 100"><path d="M50 5 L59 38 L92 38 L65 58 L74 92 L50 71 L26 92 L35 58 L8 38 L41 38 Z" fill="#D8B45E"/></svg>
+    <span class="line"></span>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="search-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input id="searchInput" type="text" placeholder="ابحث في نص الحديث، الراوي، أو المصدر...">
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-source="الكل">الكل</button>
+    <button class="filter-btn" data-source="البخاري">صحيح البخاري</button>
+    <button class="filter-btn" data-source="مسلم">صحيح مسلم</button>
+    <button class="filter-btn" data-source="أخرى">مصادر أخرى</button>
+  </div>
+
+  <p class="count-line" id="countLine"></p>
+</div>
+
+<main id="hadithContainer"></main>
+
+<footer>
+  المصادر: صحيح البخاري، صحيح مسلم، سنن الترمذي، سنن ابن ماجه، وموسوعة الحديث الشريف.
+</footer>
+
+<script>
+const hadiths = [
+  {
+    text: "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى، فَمَنْ كَانَتْ هِجْرَتُهُ إِلَى اللَّهِ وَرَسُولِهِ فَهِجْرَتُهُ إِلَى اللَّهِ وَرَسُولِهِ، وَمَنْ كَانَتْ هِجْرَتُهُ لِدُنْيَا يُصِيبُهَا أَوِ امْرَأَةٍ يَنْكِحُهَا فَهِجْرَتُهُ إِلَى مَا هَاجَرَ إِلَيْهِ",
+    narrator: "عمر بن الخطاب رضي الله عنه",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "الْمُسْلِمُ مَنْ سَلِمَ الْمُسْلِمُونَ مِنْ لِسَانِهِ وَيَدِهِ",
+    narrator: "عبد الله بن عمرو بن العاص رضي الله عنهما",
+    source: "صحيح البخاري",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ",
+    narrator: "أنس بن مالك رضي الله عنه",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "بُنِيَ الْإِسْلَامُ عَلَى خَمْسٍ: شَهَادَةِ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ، وَإِقَامِ الصَّلَاةِ، وَإِيتَاءِ الزَّكَاةِ، وَحَجِّ الْبَيْتِ، وَصَوْمِ رَمَضَانَ",
+    narrator: "عبد الله بن عمر رضي الله عنهما",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+    narrator: "أبو هريرة رضي الله عنه",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "الدِّينُ النَّصِيحَةُ، قُلْنَا: لِمَنْ؟ قَالَ: لِلَّهِ وَلِكِتَابِهِ وَلِرَسُولِهِ وَلِأَئِمَّةِ الْمُسْلِمِينَ وَعَامَّتِهِمْ",
+    narrator: "تميم الداري رضي الله عنه",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "الطُّهُورُ شَطْرُ الْإِيمَانِ",
+    narrator: "أبو مالك الأشعري رضي الله عنه",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "مَنْ غَشَّنَا فَلَيْسَ مِنَّا",
+    narrator: "أبو هريرة رضي الله عنه",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "مِنْ حُسْنِ إِسْلَامِ الْمَرْءِ تَرْكُهُ مَا لَا يَعْنِيهِ",
+    narrator: "أبو هريرة رضي الله عنه",
+    source: "سنن الترمذي",
+    sourceKey: "أخرى",
+    grade: "hasan",
+    gradeLabel: "حسن"
+  },
+  {
+    text: "لَا ضَرَرَ وَلَا ضِرَارَ",
+    narrator: "عبادة بن الصامت رضي الله عنه",
+    source: "سنن ابن ماجه والدارقطني",
+    sourceKey: "أخرى",
+    grade: "hasan",
+    gradeLabel: "حسن (صحيح بشواهده)"
+  },
+  {
+    text: "لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى أَكُونَ أَحَبَّ إِلَيْهِ مِنْ وَالِدِهِ وَوَلَدِهِ وَالنَّاسِ أَجْمَعِينَ",
+    narrator: "أنس بن مالك رضي الله عنه",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "مَنْ لَا يَرْحَمِ النَّاسَ لَا يَرْحَمْهُ اللَّهُ",
+    narrator: "جرير بن عبد الله رضي الله عنه",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "الرَّاحِمُونَ يَرْحَمُهُمُ الرَّحْمَنُ، ارْحَمُوا مَنْ فِي الْأَرْضِ يَرْحَمْكُمْ مَنْ فِي السَّمَاءِ",
+    narrator: "عبد الله بن عمرو بن العاص رضي الله عنهما",
+    source: "سنن الترمذي وأبي داود",
+    sourceKey: "أخرى",
+    grade: "sahih",
+    gradeLabel: "حسن صحيح"
+  },
+  {
+    text: "تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ",
+    narrator: "أبو ذر الغفاري رضي الله عنه",
+    source: "سنن الترمذي",
+    sourceKey: "أخرى",
+    grade: "hasan",
+    gradeLabel: "صحيح (رواه الترمذي)"
+  },
+  {
+    text: "بَيْنَما نَحْنُ جُلُوسٌ عِنْدَ رَسُولِ اللَّهِ ﷺ ذاتَ يَوْمٍ، إذْ طَلَعَ عَلَيْنا رَجُلٌ شَدِيدُ بَياضِ الثِّيابِ، شَدِيدُ سَوادِ الشَّعْرِ، لا يُرَى عَلَيْهِ أَثَرُ السَّفَرِ، وَلا يَعْرِفُهُ مِنّا أَحَدٌ، حَتَّى جَلَسَ إلَى النَّبِيِّ ﷺ فَقالَ: يا مُحَمَّدُ أَخْبِرْنِي عَنْ الإِسْلامِ. فَقالَ: الإِسْلامُ أَنْ تَشْهَدَ أَنْ لا إلَهَ إلّا اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ، وَتُقِيمَ الصَّلاةَ، وَتُؤْتِيَ الزَّكاةَ، وَتَصُومَ رَمَضانَ، وَتَحُجَّ البَيْتَ إنْ اسْتَطَعْتَ إلَيْهِ سَبِيلًا... ثُمَّ قالَ: فَإِنَّهُ جِبْرِيلُ أَتاكُمْ يُعَلِّمُكُمْ دِينَكُمْ",
+    narrator: "عمر بن الخطاب رضي الله عنه",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "إنَّ أَحَدَكُمْ يُجْمَعُ خَلْقُهُ فِي بَطْنِ أُمِّهِ أَرْبَعِينَ يَوْمًا نُطْفَةً، ثُمَّ يَكُونُ عَلَقَةً مِثْلَ ذَلِكَ، ثُمَّ يَكُونُ مُضْغَةً مِثْلَ ذَلِكَ، ثُمَّ يُرْسَلُ إلَيْهِ المَلَكُ فَيَنْفُخُ فِيهِ الرُّوحَ، وَيُؤْمَرُ بِأَرْبَعِ كَلِماتٍ: بِكَتْبِ رِزْقِهِ، وَأَجَلِهِ، وَعَمَلِهِ، وَشَقِيٍّ أَمْ سَعِيدٍ",
+    narrator: "عبد الله بن مسعود رضي الله عنه",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "مَنْ أَحْدَثَ فِي أَمْرِنا هَذا ما لَيْسَ مِنْهُ فَهُوَ رَدٌّ",
+    narrator: "عائشة أم المؤمنين رضي الله عنها",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "إنَّ الحَلالَ بَيِّنٌ، وَإنَّ الحَرامَ بَيِّنٌ، وَبَيْنَهُما أُمُورٌ مُشْتَبِهاتٌ لا يَعْلَمُهُنَّ كَثِيرٌ مِنْ النّاسِ، فَمَنْ اتَّقَى الشُّبُهاتِ فَقَدْ اسْتَبْرَأَ لِدِينِهِ وَعِرْضِهِ، وَإنَّ فِي الجَسَدِ مُضْغَةً إذا صَلَحَتْ صَلَحَ الجَسَدُ كُلُّهُ، وَإذا فَسَدَتْ فَسَدَ الجَسَدُ كُلُّهُ، أَلا وَهِيَ القَلْبُ",
+    narrator: "النعمان بن بشير رضي الله عنهما",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "أُمِرْتُ أَنْ أُقاتِلَ النّاسَ حَتَّى يَشْهَدُوا أَنْ لا إلَهَ إلّا اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ، وَيُقِيمُوا الصَّلاةَ، وَيُؤْتُوا الزَّكاةَ؛ فَإذا فَعَلُوا ذَلِكَ عَصَمُوا مِنِّي دِماءَهُمْ وَأَمْوالَهُمْ إلّا بِحَقِّ الإِسْلامِ",
+    narrator: "عبد الله بن عمر رضي الله عنهما",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "ما نَهَيْتُكُمْ عَنْهُ فاجْتَنِبُوهُ، وَما أَمَرْتُكُمْ بِهِ فَأْتُوا مِنْهُ ما اسْتَطَعْتُمْ، فَإنَّما أَهْلَكَ الَّذِينَ مِنْ قَبْلِكُمْ كَثْرَةُ مَسائِلِهِمْ وَاخْتِلافُهُمْ عَلَى أَنْبِيائِهِمْ",
+    narrator: "أبو هريرة رضي الله عنه",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "إنَّ اللَّهَ طَيِّبٌ لا يَقْبَلُ إلّا طَيِّبًا، وَإنَّ اللَّهَ أَمَرَ المُؤْمِنِينَ بِما أَمَرَ بِهِ المُرْسَلِينَ... ثُمَّ ذَكَرَ الرَّجُلَ يُطِيلُ السَّفَرَ أَشْعَثَ أَغْبَرَ يَمُدُّ يَدَيْهِ إلَى السَّماءِ: يا رَبِّ يا رَبِّ، وَمَطْعَمُهُ حَرامٌ، وَمَشْرَبُهُ حَرامٌ، وَمَلْبَسُهُ حَرامٌ، وَغُذِّيَ بِالْحَرامِ، فَأَنَّى يُسْتَجابُ لَهُ",
+    narrator: "أبو هريرة رضي الله عنه",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "دَعْ ما يُرِيبُكَ إلَى ما لا يُرِيبُكَ",
+    narrator: "الحسن بن علي رضي الله عنهما",
+    source: "سنن الترمذي والنسائي",
+    sourceKey: "أخرى",
+    grade: "sahih",
+    gradeLabel: "حسن صحيح"
+  },
+  {
+    text: "لا يَحِلُّ دَمُ امْرِئٍ مُسْلِمٍ إلّا بِإِحْدَى ثَلاثٍ: الثَّيِّبُ الزّانِي، وَالنَّفْسُ بِالنَّفْسِ، وَالتّارِكُ لِدِينِهِ المُفارِقُ لِلْجَماعَةِ",
+    narrator: "عبد الله بن مسعود رضي الله عنه",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "لا تَغْضَبْ",
+    narrator: "أبو هريرة رضي الله عنه",
+    source: "صحيح البخاري",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "إنَّ اللَّهَ كَتَبَ الإِحْسانَ عَلَى كُلِّ شَيْءٍ، فَإذا قَتَلْتُمْ فَأَحْسِنُوا القِتْلَةَ، وَإذا ذَبَحْتُمْ فَأَحْسِنُوا الذِّبْحَةَ، وَلْيُحِدَّ أَحَدُكُمْ شَفْرَتَهُ، وَلْيُرِحْ ذَبِيحَتَهُ",
+    narrator: "شداد بن أوس رضي الله عنه",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "اتَّقِ اللَّهَ حَيْثُما كُنْتَ، وَأَتْبِعْ السَّيِّئَةَ الحَسَنَةَ تَمْحُها، وَخالِقْ النّاسَ بِخُلُقٍ حَسَنٍ",
+    narrator: "أبو ذر الغفاري ومعاذ بن جبل رضي الله عنهما",
+    source: "سنن الترمذي",
+    sourceKey: "أخرى",
+    grade: "sahih",
+    gradeLabel: "حسن صحيح"
+  },
+  {
+    text: "احْفَظْ اللَّهَ يَحْفَظْكَ، احْفَظْ اللَّهَ تَجِدْهُ تُجاهَكَ، إذا سَأَلْتَ فاسْأَلْ اللَّهَ، وَإذا اسْتَعَنْتَ فاسْتَعِنْ بِاللَّهِ، وَاعْلَمْ أَنَّ النَّصْرَ مَعَ الصَّبْرِ، وَأَنَّ الفَرَجَ مَعَ الكَرْبِ، وَأَنَّ مَعَ العُسْرِ يُسْرًا",
+    narrator: "عبد الله بن عباس رضي الله عنهما",
+    source: "سنن الترمذي",
+    sourceKey: "أخرى",
+    grade: "sahih",
+    gradeLabel: "حسن صحيح"
+  },
+  {
+    text: "إذا لَمْ تَسْتَحِ فاصْنَعْ ما شِئْتَ",
+    narrator: "عبد الله بن مسعود (عقبة بن عمرو) رضي الله عنه",
+    source: "صحيح البخاري",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "آمَنْتُ بِاللَّهِ ثُمَّ اسْتَقِمْ",
+    narrator: "سفيان بن عبد الله رضي الله عنه",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "أَرَأَيْتَ إذا صَلَّيْتُ المَكْتُوباتِ، وَصُمْتُ رَمَضانَ، وَأَحْلَلْتُ الحَلالَ، وَحَرَّمْتُ الحَرامَ، وَلَمْ أَزِدْ عَلَى ذَلِكَ شَيْئًا؛ أَأَدْخُلُ الجَنَّةَ؟ قالَ: نَعَمْ",
+    narrator: "جابر بن عبد الله الأنصاري رضي الله عنهما",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "يا عِبادِي: إنِّي حَرَّمْتُ الظُّلْمَ عَلَى نَفْسِي، وَجَعَلْتُهُ بَيْنَكُمْ مُحَرَّمًا، فَلا تَظالَمُوا. يا عِبادِي! إنَّكُمْ تُخْطِئُونَ بِاللَّيْلِ وَالنَّهارِ، وَأَنا أَغْفِرُ الذُّنُوبَ جَمِيعًا؛ فاسْتَغْفِرُونِي أَغْفِرْ لَكُمْ",
+    narrator: "أبو ذر الغفاري رضي الله عنه (حديث قدسي)",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "أَوَلَيْسَ قَدْ جَعَلَ اللَّهُ لَكُمْ ما تَصَّدَّقُونَ؟ إنَّ بِكُلِّ تَسْبِيحَةٍ صَدَقَةً، وَكُلِّ تَكْبِيرَةٍ صَدَقَةً، وَكُلِّ تَحْمِيدَةٍ صَدَقَةً، وَكُلِّ تَهْلِيلَةٍ صَدَقَةً، وَأَمْرٌ بِمَعْرُوفٍ صَدَقَةٌ، وَنَهْيٌ عَنْ مُنْكَرٍ صَدَقَةٌ",
+    narrator: "أبو ذر الغفاري رضي الله عنه",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "كُلُّ سُلامَى مِنْ النّاسِ عَلَيْهِ صَدَقَةٌ، كُلَّ يَوْمٍ تَطْلُعُ فِيهِ الشَّمْسُ تَعْدِلُ بَيْنَ اثْنَيْنِ صَدَقَةٌ، وَالكَلِمَةُ الطَّيِّبَةُ صَدَقَةٌ، وَبِكُلِّ خُطْوَةٍ تَمْشِيها إلَى الصَّلاةِ صَدَقَةٌ، وَتُمِيطُ الأَذَى عَنْ الطَّرِيقِ صَدَقَةٌ",
+    narrator: "أبو هريرة رضي الله عنه",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "الْبِرُّ حُسْنُ الخُلُقِ، وَالْإِثْمُ ما حاكَ فِي صَدْرِكَ، وَكَرِهْتَ أَنْ يَطَّلِعَ عَلَيْهِ النّاسُ",
+    narrator: "النواس بن سمعان رضي الله عنه",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "وَعَظَنا رَسُولُ اللَّهِ ﷺ مَوْعِظَةً وَجِلَتْ مِنْها القُلُوبُ، وَذَرَفَتْ مِنْها العُيُونُ، فَقُلْنا: يا رَسُولَ اللَّهِ! كَأَنَّها مَوْعِظَةُ مُوَدِّعٍ فَأَوْصِنا، قالَ: أُوصِيكُمْ بِتَقْوَى اللَّهِ، وَالسَّمْعِ وَالطّاعَةِ، فَعَلَيْكُمْ بِسُنَّتِي وَسُنَّةِ الخُلَفاءِ الرّاشِدِينَ المَهْدِيِّينَ، وَإِيّاكُمْ وَمُحْدَثاتِ الأُمُورِ؛ فَإِنَّ كُلَّ بِدْعَةٍ ضَلالَةٌ",
+    narrator: "العرباض بن سارية رضي الله عنه",
+    source: "سنن أبي داود والترمذي",
+    sourceKey: "أخرى",
+    grade: "sahih",
+    gradeLabel: "حسن صحيح"
+  },
+  {
+    text: "تَعْبُدُ اللَّهَ لا تُشْرِكُ بِهِ شَيْئًا، وَتُقِيمُ الصَّلاةَ، وَتُؤْتِي الزَّكاةَ، وَتَصُومُ رَمَضانَ، وَتَحُجُّ البَيْتَ... رَأْسُ الأَمْرِ الإِسْلامُ، وَعَمُودُهُ الصَّلاةُ، وَذُرْوَةُ سَنامِهِ الجِهادُ، وَهَلْ يَكُبُّ النّاسَ عَلَى وُجُوهِهِمْ إلّا حَصائِدُ أَلْسِنَتِهِمْ",
+    narrator: "معاذ بن جبل رضي الله عنه",
+    source: "سنن الترمذي",
+    sourceKey: "أخرى",
+    grade: "sahih",
+    gradeLabel: "حسن صحيح"
+  },
+  {
+    text: "إنَّ اللَّهَ تَعالَى فَرَضَ فَرائِضَ فَلا تُضَيِّعُوها، وَحَدَّ حُدُودًا فَلا تَعْتَدُوها، وَحَرَّمَ أَشْياءَ فَلا تَنْتَهِكُوها، وَسَكَتَ عَنْ أَشْياءَ رَحْمَةً لَكُمْ غَيْرَ نِسْيانٍ فَلا تَبْحَثُوا عَنْها",
+    narrator: "أبو ثعلبة الخشني رضي الله عنه",
+    source: "سنن الدارقطني",
+    sourceKey: "أخرى",
+    grade: "hasan",
+    gradeLabel: "حسن"
+  },
+  {
+    text: "ازْهَدْ فِي الدُّنْيا يُحِبَّكَ اللَّهُ، وَازْهَدْ فِيما عِنْدَ النّاسِ يُحِبَّكَ النّاسُ",
+    narrator: "سهل بن سعد الساعدي رضي الله عنه",
+    source: "سنن ابن ماجه",
+    sourceKey: "أخرى",
+    grade: "hasan",
+    gradeLabel: "حسن"
+  },
+  {
+    text: "لَوْ يُعْطَى النّاسُ بِدَعْواهُمْ لَادَّعَى رِجالٌ أَمْوالَ قَوْمٍ وَدِماءَهُمْ، لَكِنَّ البَيِّنَةَ عَلَى المُدَّعِي، وَالْيَمِينَ عَلَى مَنْ أَنْكَرَ",
+    narrator: "عبد الله بن عباس رضي الله عنهما",
+    source: "السنن الكبرى للبيهقي",
+    sourceKey: "أخرى",
+    grade: "hasan",
+    gradeLabel: "حسن"
+  },
+  {
+    text: "مَنْ رَأَى مِنْكُمْ مُنْكَرًا فَلْيُغَيِّرْهُ بِيَدِهِ، فَإنْ لَمْ يَسْتَطِعْ فَبِلِسانِهِ، فَإنْ لَمْ يَسْتَطِعْ فَبِقَلْبِهِ، وَذَلِكَ أَضْعَفُ الإِيمانِ",
+    narrator: "أبو سعيد الخدري رضي الله عنه",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "لا تَحاسَدُوا، وَلا تَناجَشُوا، وَلا تَباغَضُوا، وَلا تَدابَرُوا، وَكُونُوا عِبادَ اللَّهِ إخْوانًا، المُسْلِمُ أَخُو المُسْلِمِ لا يَظْلِمُهُ وَلا يَخْذُلُهُ، كُلُّ المُسْلِمِ عَلَى المُسْلِمِ حَرامٌ: دَمُهُ وَمالُهُ وَعِرْضُهُ",
+    narrator: "أبو هريرة رضي الله عنه",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "مَنْ نَفَّسَ عَنْ مُؤْمِنٍ كُرْبَةً مِنْ كُرَبِ الدُّنْيا نَفَّسَ اللَّهُ عَنْهُ كُرْبَةً مِنْ كُرَبِ يَوْمِ القِيامَةِ، وَمَنْ يَسَّرَ عَلَى مُعْسِرٍ يَسَّرَ اللَّهُ عَلَيْهِ فِي الدُّنْيا وَالْآخِرَةِ، وَمَنْ سَتَرَ مُسْلِمًا سَتَرَهُ اللَّهُ فِي الدُّنْيا وَالْآخِرَةِ",
+    narrator: "أبو هريرة رضي الله عنه",
+    source: "صحيح مسلم",
+    sourceKey: "مسلم",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "إنَّ اللَّهَ كَتَبَ الحَسَناتِ وَالسَّيِّئاتِ، فَمَنْ هَمَّ بِحَسَنَةٍ فَلَمْ يَعْمَلْها كَتَبَها اللَّهُ عِنْدَهُ حَسَنَةً كامِلَةً، وَإنْ هَمَّ بِها فَعَمِلَها كَتَبَها اللَّهُ عَشْرَ حَسَناتٍ إلَى سَبْعِمِائَةِ ضِعْفٍ، وَإنْ هَمَّ بِسَيِّئَةٍ فَلَمْ يَعْمَلْها كَتَبَها اللَّهُ حَسَنَةً كامِلَةً",
+    narrator: "عبد الله بن عباس رضي الله عنهما",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "مَنْ عادَى لِي وَلِيًّا فَقَدْ آذَنْتُهُ بِالْحَرْبِ، وَما تَقَرَّبَ إلَيَّ عَبْدِي بِشَيْءٍ أَحَبَّ إلَيَّ مِمّا افْتَرَضْتُهُ عَلَيْهِ، وَلا يَزالُ عَبْدِي يَتَقَرَّبُ إلَيَّ بِالنَّوافِلِ حَتَّى أُحِبَّهُ",
+    narrator: "أبو هريرة رضي الله عنه (حديث قدسي)",
+    source: "صحيح البخاري",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "إنَّ اللَّهَ تَجاوَزَ لِي عَنْ أُمَّتِي الخَطَأَ وَالنِّسْيانَ وَما اسْتُكْرِهُوا عَلَيْهِ",
+    narrator: "عبد الله بن عباس رضي الله عنهما",
+    source: "سنن ابن ماجه",
+    sourceKey: "أخرى",
+    grade: "hasan",
+    gradeLabel: "حسن"
+  },
+  {
+    text: "كُنْ فِي الدُّنْيا كَأَنَّكَ غَرِيبٌ أَوْ عابِرُ سَبِيلٍ",
+    narrator: "عبد الله بن عمر رضي الله عنهما",
+    source: "صحيح البخاري",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "لا يُؤْمِنُ أَحَدُكُمْ حَتَّى يَكُونَ هَواهُ تَبَعًا لِما جِئْتُ بِهِ",
+    narrator: "عبد الله بن عمرو بن العاص رضي الله عنهما",
+    source: "كتاب الحجة",
+    sourceKey: "أخرى",
+    grade: "sahih",
+    gradeLabel: "حسن صحيح"
+  },
+  {
+    text: "يا ابْنَ آدَمَ! إنَّكَ ما دَعَوْتَنِي وَرَجَوْتَنِي غَفَرْتُ لَكَ عَلَى ما كانَ مِنْكَ وَلا أُبالِي، يا ابْنَ آدَمَ! لَوْ بَلَغَتْ ذُنُوبُكَ عَنانَ السَّماءِ ثُمَّ اسْتَغْفَرْتَنِي غَفَرْتُ لَكَ",
+    narrator: "أنس بن مالك رضي الله عنه (حديث قدسي)",
+    source: "سنن الترمذي",
+    sourceKey: "أخرى",
+    grade: "sahih",
+    gradeLabel: "حسن صحيح"
+  },
+  {
+    text: "أَلْحِقُوا الفَرائِضَ بِأَهْلِها، فَما أَبْقَتْ الفَرائِضُ فَلِأَوْلَى رَجُلٍ ذَكَرٍ",
+    narrator: "عبد الله بن عباس رضي الله عنهما",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "الرَّضاعَةُ تُحَرِّمُ ما تُحَرِّمُ الوِلادَةُ",
+    narrator: "عائشة أم المؤمنين رضي الله عنها",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "إنَّ اللَّهَ وَرَسُولَهُ حَرَّمَ بَيْعَ الخَمْرِ وَالْمَيْتَةِ وَالْخِنْزِيرِ وَالْأَصْنامِ",
+    narrator: "جابر بن عبد الله رضي الله عنهما",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "كُلُّ مُسْكِرٍ حَرامٌ",
+    narrator: "أبو موسى الأشعري رضي الله عنه",
+    source: "صحيح البخاري",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح"
+  },
+  {
+    text: "ما مَلَأَ آدَمِيٌّ وِعاءً شَرًّا مِنْ بَطْنٍ، بِحَسْبِ ابْنِ آدَمَ أُكُلاتٌ يُقِمْنَ صُلْبَهُ، فَإنْ كانَ لا مَحالَةَ، فَثُلُثٌ لِطَعامِهِ، وَثُلُثٌ لِشَرابِهِ، وَثُلُثٌ لِنَفَسِهِ",
+    narrator: "المقدام بن معدي كرب رضي الله عنه",
+    source: "سنن الترمذي وابن ماجه",
+    sourceKey: "أخرى",
+    grade: "hasan",
+    gradeLabel: "حسن"
+  },
+  {
+    text: "أَرْبَعٌ مَنْ كُنَّ فِيهِ كانَ مُنافِقًا: مَنْ إذا حَدَّثَ كَذَبَ، وَإذا وَعَدَ أَخْلَفَ، وَإذا خاصَمَ فَجَرَ، وَإذا عاهَدَ غَدَرَ",
+    narrator: "عبد الله بن عمرو بن العاص رضي الله عنهما",
+    source: "صحيح البخاري ومسلم",
+    sourceKey: "البخاري",
+    grade: "sahih",
+    gradeLabel: "صحيح متفق عليه"
+  },
+  {
+    text: "لَوْ أَنَّكُمْ تَتَوَكَّلُونَ عَلَى اللَّهِ حَقَّ تَوَكُّلِهِ لَرَزَقَكُمْ كَما يَرْزُقُ الطَّيْرَ تَغْدُو خِماصًا وَتَرُوحُ بِطانًا",
+    narrator: "عمر بن الخطاب رضي الله عنه",
+    source: "سنن الترمذي",
+    sourceKey: "أخرى",
+    grade: "sahih",
+    gradeLabel: "حسن صحيح"
+  },
+  {
+    text: "لا يَزالُ لِسانُكَ رَطْبًا مِنْ ذِكْرِ اللَّهِ عَزَّ وَجَلَّ",
+    narrator: "عبد الله بن بسر رضي الله عنه",
+    source: "مسند الإمام أحمد",
+    sourceKey: "أخرى",
+    grade: "hasan",
+    gradeLabel: "حسن"
+  },
+];
+
+const container = document.getElementById('hadithContainer');
+const countLine = document.getElementById('countLine');
+const searchInput = document.getElementById('searchInput');
+const filterButtons = document.querySelectorAll('.filter-btn');
+
+let activeSource = 'الكل';
+let query = '';
+
+function starIcon(){
+  return '<svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 8 L58 36 L86 36 L63 53 L71 82 L50 64 L29 82 L37 53 L14 36 L42 36 Z"/></svg>';
+}
+
+function isnadLine(narrator){
+  const isQudsi = narrator.includes('قدسي');
+  const cleanNarrator = narrator.replace(/\s*\(حديث قدسي\)\s*/g, '').trim();
+  if(isQudsi){
+    return `عَنْ ${cleanNarrator}، عَنِ النَّبِيِّ ﷺ فِيما يَرْوِيهِ عَنْ رَبِّهِ عَزَّ وَجَلَّ قالَ:`;
+  }
+  return `عَنْ ${cleanNarrator}، عَنِ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قالَ:`;
+}
+
+/* يبني رابط بحث عن الحديث في الموسوعة الحديثية (الدرر السنية) بالاعتماد على أول كلمات النص */
+function verifyLink(text){
+  const stripped = text
+    .replace(/[\u064B-\u065F\u0670]/g, '')   // إزالة التشكيل
+    .replace(/[«»"":.,؛!؟]/g, '')
+    .trim();
+  const words = stripped.split(/\s+/).slice(0, 7).join(' ');
+  return 'https://dorar.net/site/search?q=' + encodeURIComponent(words);
+}
+
+function render(){
+  const filtered = hadiths.filter(h => {
+    const matchesSource = activeSource === 'الكل' || h.sourceKey === activeSource;
+    const q = query.trim();
+    const matchesQuery = !q ||
+      h.text.includes(q) ||
+      h.narrator.includes(q) ||
+      h.source.includes(q);
+    return matchesSource && matchesQuery;
+  });
+
+  countLine.textContent = filtered.length + (filtered.length === 1 ? ' حديث معروض' : ' أحاديث معروضة') + ' من أصل ' + hadiths.length;
+
+  if(filtered.length === 0){
+    container.innerHTML = '<div class="empty-state">لا توجد نتائج مطابقة لبحثك. جرّب كلمة أخرى.</div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(h => `
+    <article class="card">
+      <div class="card-badge">${starIcon()}<span>${h.source}</span></div>
+      <p class="isnad-line">${isnadLine(h.narrator)}</p>
+      <p class="hadith-text">${h.text}</p>
+      <div class="meta">
+        <span><span class="label">الراوي:</span> ${h.narrator}</span>
+        <span><span class="label">المصدر:</span> ${h.source}</span>
+        <span class="grade ${h.grade}">${h.gradeLabel}</span>
+      </div>
+      <a class="verify-link" href="${verifyLink(h.text)}" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        تحقّق من تخريج الحديث في الموسوعة الحديثية
+      </a>
+    </article>
+  `).join('');
+}
+
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeSource = btn.dataset.source;
+    render();
+  });
+});
+
+searchInput.addEventListener('input', (e) => {
+  query = e.target.value;
+  render();
+});
+
+render();
+
+/* ===== Dark mode ===== */
+const root = document.documentElement;
+const themeToggle = document.getElementById('themeToggle');
+
+function applyTheme(theme){
+  if(theme === 'dark'){
+    root.setAttribute('data-theme', 'dark');
+  } else {
+    root.removeAttribute('data-theme');
+  }
+}
+
+let savedTheme = 'light';
+try{
+  savedTheme = localStorage.getItem('hadith-theme') || 'light';
+}catch(e){}
+applyTheme(savedTheme);
+
+themeToggle.addEventListener('click', () => {
+  const isDark = root.getAttribute('data-theme') === 'dark';
+  const next = isDark ? 'light' : 'dark';
+  applyTheme(next);
+  try{ localStorage.setItem('hadith-theme', next); }catch(e){}
+});
+
+/* ===== Salawat reminder every 50 seconds ===== */
+const salawatPhrases = [
+  "اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنا مُحَمَّدٍ",
+  "صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+  "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ",
+  "مَنْ صَلَّى عَلَيَّ صَلاةً صَلَّى اللَّهُ عَلَيْهِ بِها عَشْرًا",
+];
+
+const salawatToast = document.getElementById('salawatToast');
+const salawatText = document.getElementById('salawatText');
+let salawatIndex = 0;
+
+function showSalawatReminder(){
+  salawatIndex = (salawatIndex + 1) % salawatPhrases.length;
+  salawatText.textContent = salawatPhrases[salawatIndex];
+  salawatToast.classList.add('show');
+  setTimeout(() => {
+    salawatToast.classList.remove('show');
+  }, 6000);
+}
+
+setInterval(showSalawatReminder, 50000);
+</script>
+
+</body>
+</html>
